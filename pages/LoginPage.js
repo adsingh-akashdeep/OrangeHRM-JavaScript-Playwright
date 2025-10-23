@@ -1,4 +1,3 @@
-import { TIMEOUT } from "dns";
 import { WebPage } from "./WebPage";
 
 export class LoginPage extends WebPage{
@@ -16,11 +15,12 @@ export class LoginPage extends WebPage{
         await this.page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
     }
 
-    async doLogin(username, password){
+    async doLogin(username, password){ 
         await this.usernameInputBox.fill(username);
         await this.passwordInputBox.fill(password);
         await this.loginButton.click();
     }
+
     async getPageURL() {
         return await this.page.url();
     }

@@ -11,6 +11,7 @@ test.describe('Admin Page Tests', async () => {
     let adminPage;
 
     test.beforeEach(async ({page}) => {
+        test.setTimeout(30000);
         loginPage = new LoginPage(page);
         dashboardPage = new DashboardPage(page);
         adminPage = new AdminPage(page); 
