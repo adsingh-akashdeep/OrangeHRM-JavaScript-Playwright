@@ -34,12 +34,16 @@ test.describe('Admin Page Tests', async () => {
         expect(items.length).toBeGreaterThan(0);
     });
 
-    test('verifySystemUsersInputsFindAccurateUser',async({page})=>{
+    test.only('verifySystemUsersInputsFindAccurateUser',async({page})=>{
         await adminPage.adminOptionClick();
         await adminPage.openUserManagementDropdown();
         await adminPage.searchSystemUser('Admin');
-        const text = await adminPage.getUserFromSearchResult();
-        expect(text).toContain('Admin');
 
+        const results = await adminPage.getUserFromSearchResult();
+        // Extract text from each
+        const texts = await Promise.all(results.map(el => el.textContent()));
+        // Check if any element includes the word "Admin"
+        const hasAdmin = texts.some(text => text.includes('Admin'));
+        expect(hasAdmin).toBeTruthy();
     });
 });

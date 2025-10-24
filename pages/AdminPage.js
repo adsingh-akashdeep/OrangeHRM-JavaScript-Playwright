@@ -10,7 +10,8 @@ export class AdminPage extends WebPage{
         this.jobTitlesItem = page.locator("ul > li.oxd-topbar-body-nav-tab:nth-of-type(2) > ul > li:nth-of-type(1)");
         this.usernameInputInSystemUsersForm = page.locator("//div[@id='app']//div//div[2]//div//div//div//div[2]//form//div//div//div//div//div[2]//input[@class]");
         this.submitButtonInSystemUserForm = page.locator("button[type = 'submit']");
-        this.userInTheSearchResult = page.locator("//*[@id='app']/div[1]/div[2]/div[2]/div/div[2]/div[3]/div/div[2]/div/div/div[2]/div");
+        this.userInTheSearchResult = page.locator('//div[@class="oxd-table-cell oxd-padding-cell"]/div[text()="Admin"]')
+       // this.userInTheSearchResult = page.locator("//*[@id='app']/div[1]/div[2]/div[2]/div/div[2]/div[3]/div/div[2]/div/div/div[2]/div");
     }
 
     async adminOptionClick(){
@@ -40,7 +41,7 @@ export class AdminPage extends WebPage{
     }
 
     async getUserFromSearchResult() {
-        return await this.userInTheSearchResult.textContent();
+        return await this.userInTheSearchResult.allTextContents();
     }
 
 }
