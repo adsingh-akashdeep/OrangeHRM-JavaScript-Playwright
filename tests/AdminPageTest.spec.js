@@ -41,9 +41,10 @@ test.describe('Admin Page Tests', async () => {
 
         const results = await adminPage.getUserFromSearchResult();
         // Extract text from each
-        const texts = await Promise.all(results.map(el => el.textContent()));
+        const texts = await Promise.all(results.map(async el => el.textContent()));
         // Check if any element includes the word "Admin"
         const hasAdmin = texts.some(text => text.includes('Admin'));
         expect(hasAdmin).toBeTruthy();
     });
 });
+ 
