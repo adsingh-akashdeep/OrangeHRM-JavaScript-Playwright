@@ -49,7 +49,7 @@ test.describe('Dashboard Page Tests', async() =>{
         expect(isExpanded).toBeTruthy();
     })
 
-    test.only('verifyHelpIconsOpenHelpPage', async({page})=>{
+    test('verifyHelpIconsOpenHelpPage', async({page})=>{
         const [newPage] = await Promise.all([
             page.waitForEvent('popup'),
             dashboardPage.clickHelpIcon(),
