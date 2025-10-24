@@ -13,6 +13,10 @@ import { defineConfig, devices } from '@playwright/test';
  * @see https://playwright.dev/docs/test-configuration
  */
 export default defineConfig({
+  reporter: [
+    ['list'],
+    ['allure-playwright']
+  ],
   testDir: './tests',
   /* Run tests in files in parallel */
   fullyParallel: true,
